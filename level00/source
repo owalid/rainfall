@@ -1,0 +1,14 @@
+int	main(int arg, char **argv)
+{
+	if (atoi(argv[1]) == 423)
+	{
+		str = strdup("/bin/sh");
+		getegid();
+		geteuid();
+		setegid();
+		seteuid();
+		execve(str, NULL, NULL);
+	}
+	else
+		fwrite(0, "No !\n");
+}
