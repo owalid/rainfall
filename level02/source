@@ -1,0 +1,20 @@
+void 	p()
+{
+	char buf[??];
+
+	fflush();
+	gets(buf);
+	if ()
+	{
+		printf("(%p)\n");
+		exit(1);
+	}
+	puts(buf);
+	strdup(buf);
+}
+
+
+void	main(int arg, char **argv)
+{
+	p()
+}
