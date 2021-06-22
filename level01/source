@@ -1,0 +1,13 @@
+void 	run()
+{
+	char *str = "Good... Wait what?";
+	fwrite(str);
+	system("/bin/sh");
+}
+
+
+void	main(int arg, char **argv)
+{
+	char input[75];
+	gets(input);
+}
