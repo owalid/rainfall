@@ -1,16 +1,20 @@
+void	addr(char *buf)
+{
+	puts(buf);
+	return strdup(buf);
+}
+
 void 	p()
 {
-	char buf[??];
+	char buf[75];
 
 	fflush();
 	gets(buf);
-	if ()
+	if (!buf)
 	{
 		printf("(%p)\n");
 		exit(1);
 	}
-	puts(buf);
-	strdup(buf);
 }
 
 
