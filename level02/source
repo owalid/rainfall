@@ -1,20 +1,16 @@
-void	addr(char *buf)
-{
-	puts(buf);
-	return strdup(buf);
-}
-
 void 	p()
 {
 	char buf[75];
 
 	fflush();
 	gets(buf);
-	if (!buf)
+	if ((return_address & 0xb0000000) == 0xb0000000)
 	{
 		printf("(%p)\n");
 		exit(1);
 	}
+	puts(buf);
+	strdup(buf);
 }
 
 
