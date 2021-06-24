@@ -1,0 +1,18 @@
+void v()
+{
+	char format[536];
+	int m;
+
+	fgets(format, 512, STDIN);
+	printf(format);
+	if (m = 64)
+	{
+		fwrite("Wait what ?!\n");
+		system("/bin/sh");
+	}
+}
+
+int main()
+{
+	v();
+}
