@@ -1,0 +1,18 @@
+void n()
+{
+	system("cat /home/user/level7/.pass");
+}
+
+void m()
+{
+	puts("Nope !");
+}
+
+int main(char **argv)
+{
+	char *dst;
+
+	dst = malloc(64)
+	malloc(4)
+	strcpy(argv[1])
+}
