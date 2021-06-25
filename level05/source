@@ -1,0 +1,19 @@
+void  o()
+{
+  char* bin_sh = "/bin/sh";
+  system(bin_sh);
+  exit(2);
+}
+
+void n()
+{
+  char s[0x218]; //536
+
+  fgets(s, 0x200, STDIN); // 512
+  printf(s);
+  exit(5);
+}
+void main()
+{
+  n();
+}
