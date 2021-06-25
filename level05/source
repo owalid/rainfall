@@ -2,7 +2,7 @@ void  o()
 {
   char* bin_sh = "/bin/sh";
   system(bin_sh);
-  exit(2);
+  exit(0);
 }
 
 void n()
@@ -11,7 +11,7 @@ void n()
 
   fgets(s, 0x200, STDIN); // 512
   printf(s);
-  exit(5);
+  exit(0);
 }
 void main()
 {
