@@ -1,0 +1,25 @@
+void p()
+{
+	int		4h;
+	time_t	8h;
+
+	time(&8h);
+	printf("%s - %d\n", 8h, 4h);
+}
+
+int main()
+{
+	char* s1, s2, s3, s4;
+	char* s;
+	int fd;
+
+	s1 = malloc(8);
+	s2 = malloc(8);
+	s3 = malloc(8);
+	s4 = malloc(8);
+	strcpy(s2, argv[1]);
+	strcpy(s4, argv[2]);
+	fd = fopen("/home/user/level8/.pass", "r");
+	fgets(&s, 68, fd)
+	puts(s);
+}
