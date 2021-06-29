@@ -11,8 +11,11 @@ void m()
 int main(char **argv)
 {
 	char *dst;
-
-	dst = malloc(64)
-	malloc(4)
-	strcpy(argv[1])
+	void (*f)();
+	
+	dst = malloc(64);
+	f = malloc(4);
+	f = &m;
+	strcpy(dst, argv[1]);
+	f();
 }
