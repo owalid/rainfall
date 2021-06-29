@@ -1,17 +1,17 @@
-void p()
+void m()
 {
-	int		4h;
-	time_t	8h;
+	int		i;
+	time_t	time;
 
-	time(&8h);
-	printf("%s - %d\n", 8h, 4h);
+	time(&time);
+	printf("%s - %d\n", time, i);
 }
 
 int main()
 {
-	char* s1, s2, s3, s4;
-	char* s;
-	int fd;
+	char *s1, *s2, *s3, *s4;
+	FILE *fd;
+	char s[68];
 
 	s1 = malloc(8);
 	s2 = malloc(8);
