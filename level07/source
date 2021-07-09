@@ -1,25 +1,36 @@
+char s[68];
+
 void m()
 {
-	int		i;
 	time_t	time;
 
 	time(&time);
-	printf("%s - %d\n", time, i);
+	printf("%s - %d\n", s, time);
+}
+
+struct s_var {
+	int	nb;
+	char	*s;
 }
 
 int main()
 {
-	char *s1, *s2, *s3, *s4;
+	struct s_var var;
+	struct s_var var;
 	FILE *fd;
-	char s[68];
 
-	s1 = malloc(8);
-	s2 = malloc(8);
-	s3 = malloc(8);
-	s4 = malloc(8);
-	strcpy(s2, argv[1]);
-	strcpy(s4, argv[2]);
+	var1 = malloc(8);
+	var1->nb = 1;
+	var1->s = malloc(8);
+	var2 = malloc(8);
+	var2->nb = 2;
+	var2->s = malloc(8);
+
+	strcpy(var1->s, argv[1]);
+	strcpy(var2->s, argv[2]);
+
 	fd = fopen("/home/user/level8/.pass", "r");
 	fgets(&s, 68, fd)
-	puts(s);
+
+	puts("~~\n");
 }
