@@ -26,6 +26,7 @@ int main(int argc, char **argv)
     i2->name = malloc(8);
 
     strcpy(i1->name, argv[1]);
+	printf("addr: %p\n", i2->name);
     strcpy(i2->name, argv[2]);
 
     printf("and that's a wrap folks ! \n");

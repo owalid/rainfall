@@ -32,5 +32,5 @@ int main()
 	fd = fopen("/home/user/level8/.pass", "r");
 	fgets(&s, 68, fd)
 
-	puts("~~\n");
+	printf("~~\n");
 }
