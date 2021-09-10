@@ -1,0 +1,25 @@
+int main()
+{
+	int var_bp_8h;
+	char *size;
+	FILE *nitems;
+	FILE *stream;
+	int *var_1ch;
+	char *src;
+
+	printf("%p, %p \n");
+	fgets()
+	# "auth "
+	size = malloc(4);
+	if ()
+		strcpy(src, dst);
+	# "reset"
+	if ()
+		free(ptr);
+	if ()
+		strdup(src);
+	# "login"
+	if ()
+		system("/bin/sh")
+	fwrite("Passwprd:\n", 1, 10, ptr, stream);
+}
