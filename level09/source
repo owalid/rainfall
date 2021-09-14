@@ -1,0 +1,20 @@
+class N()
+{
+	N(void *s1, char *s)
+	{
+		len = strlen(s);
+		memcpy(s1, s2, len)
+	}
+}
+
+int main()
+{
+	if (argv[] == 1)
+		exit(1);
+	new(108);
+	N::N(6);
+	new(108);
+	N::N(6);
+	setAnnotation();
+	edx();
+}
