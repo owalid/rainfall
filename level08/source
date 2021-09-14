@@ -1,37 +1,51 @@
 int main()
 {
-	char *size;
 	char *auth;
+	char *service;
+	char *str;
 
 	while (1)
 	{
-		printf("%p, %p \n");
-		fgets(auth, 180)
-		char lol[] = "auth ";
+		printf("%p, %p \n", auth, service);
+		fgets(str, 180)
+		#
+		# "auth "
+		#
 		i = 5;
 		while (i) 
+			check is auth
+		if (is auth)
 		{
-			i--;
-			lol++;
-			auth++;
-			if (*lol - *auth)
-				break;
-		}
-		if ()
-		{
-			size = malloc(4);
+			auth = malloc(4);
 			if ()
-				strcpy(auth, dst);
+				strcpy(auth, str);
 		}
+		#
 		# "reset"
-		if ()
-			free(ptr);
-		if ()
-			strdup(auth);
+		#
+		i = 5;
+		while (i)
+			check is reset;
+		if (is reset)
+			free(auth);
+		#
+		# "service"
+		#
+		i = 5;
+		while (i)
+			check is reset;
+		if (is service)
+			strdup(service, str);
+		#
 		# "login"
-		if ()
-			system("/bin/sh")
-		else
-			fwrite("Passwprd:\n", 1);
+		#
+		i = 5;
+		while (i)
+			check is login;
+		if (is login)
+			if (*(auth + 0x20) == 0)
+				system("/bin/sh")
+			else
+				fwrite("Passwprd:\n", 1);
 	}
 }
