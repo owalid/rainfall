@@ -1,25 +1,37 @@
 int main()
 {
-	int var_bp_8h;
 	char *size;
-	FILE *nitems;
-	FILE *stream;
-	int *var_1ch;
-	char *src;
+	char *auth;
 
-	printf("%p, %p \n");
-	fgets()
-	# "auth "
-	size = malloc(4);
-	if ()
-		strcpy(src, dst);
-	# "reset"
-	if ()
-		free(ptr);
-	if ()
-		strdup(src);
-	# "login"
-	if ()
-		system("/bin/sh")
-	fwrite("Passwprd:\n", 1, 10, ptr, stream);
+	while (1)
+	{
+		printf("%p, %p \n");
+		fgets(auth, 180)
+		char lol[] = "auth ";
+		i = 5;
+		while (i) 
+		{
+			i--;
+			lol++;
+			auth++;
+			if (*lol - *auth)
+				break;
+		}
+		if ()
+		{
+			size = malloc(4);
+			if ()
+				strcpy(auth, dst);
+		}
+		# "reset"
+		if ()
+			free(ptr);
+		if ()
+			strdup(auth);
+		# "login"
+		if ()
+			system("/bin/sh")
+		else
+			fwrite("Passwprd:\n", 1);
+	}
 }
