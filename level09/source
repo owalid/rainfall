@@ -1,27 +1,27 @@
 class N()
 {
 public:
-	int N(int arg1, int arg2)
+	char* str;
+
+	int N(char* str)
 	{
-		*arg1 = 0x8048848;
-		*(arg1 + 0x68) = arg2;
-		return arg1;
+		this->str = str;
 	}
 
 	int setAnnotation(void *s1)
 	{
-		len = strlen(this->str);
-		memcpy(s1 + 4, self.str, len)
+		len = strlen(s1);
+		memcpy(this->str, s1, len)
 	}
 
-	int operator+(void *arg1, void *arg2)
+	int operator+(N *n)
 	{
-		return *(arg2 + 0x68) + *(arg1 + 0x68);
+		return &(this->str) + n;
 	}
 
-	int operator+(void *arg1, void *arg2)
+	int operator-(N *n, void *arg2)
 	{
-		return *(arg2 + 0x68) - *(arg1 + 0x68);
+		return this->val - n->val;
 	}
 }
 
@@ -35,4 +35,5 @@ int main()
 	b = new N(6)
 	a->setAnnotation(b);
 	edx();
+	return **a(a, b);
 }
