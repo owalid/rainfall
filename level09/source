@@ -1,6 +1,6 @@
 class N()
 {
-	int N(self, int arg1, int arg2)
+	int N(int arg1, int arg2)
 	{
 		*arg1 = 0x8048848;
 		*(arg1 + 0x68) = arg2;
@@ -11,6 +11,16 @@ class N()
 	{
 		len = strlen(self.str);
 		memcpy(s1 + 4, self.str, len)
+	}
+
+	int operator+(void *arg1, void *arg2)
+	{
+		return *(arg2 + 0x68) + *(arg1 + 0x68);
+	}
+
+	int operator+(void *arg1, void *arg2)
+	{
+		return *(arg2 + 0x68) - *(arg1 + 0x68);
 	}
 }
 
