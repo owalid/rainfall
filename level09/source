@@ -1,11 +1,12 @@
 class N()
 {
 public:
-	char* str;
+	char*	str;
+	int		nombre;
 
-	int N(char* str)
+	N(int n)
 	{
-		this->str = str;
+		this->nombre = n;
 	}
 
 	int setAnnotation(void *s1)
@@ -16,12 +17,12 @@ public:
 
 	int operator+(N *n)
 	{
-		return &(this->str) + n;
+		return this->nombre + n->nombre;
 	}
 
 	int operator-(N *n, void *arg2)
 	{
-		return this->val - n->val;
+		return this->nombre - n->nombre;
 	}
 }
 
@@ -31,9 +32,8 @@ int main()
 		exit(1);
 
 	F *a, *b;
-	a = new N(6);
+	a = new N(5);
 	b = new N(6)
-	a->setAnnotation(b);
-	edx();
-	return **a(a, b);
+	a->setAnnotation(argv[1]);
+	return a(a, b);
 }
