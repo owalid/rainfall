@@ -1,0 +1,27 @@
+class N()
+{
+	int N(self, int arg1, int arg2)
+	{
+		*arg1 = 0x8048848;
+		*(arg1 + 0x68) = arg2;
+		return arg1;
+	}
+
+	int setAnnotation(self, void *s1)
+	{
+		len = strlen(self.str);
+		memcpy(s1 + 4, self.str, len)
+	}
+}
+
+int main()
+{
+	if (argv[] == 1)
+		exit(1);
+	new(108);
+	N::N(6);
+	new(108);
+	N::N(6);
+	setAnnotation();
+	edx();
+}

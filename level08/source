@@ -44,8 +44,8 @@ int main()
 			check is login;
 		if (is login)
 			if (*(auth + 0x20) == 0)
-				system("/bin/sh")
-			else
 				fwrite("Passwprd:\n", 1);
+			else
+				system("/bin/sh")
 	}
 }
