@@ -1,5 +1,6 @@
 class N()
 {
+public:
 	int N(int arg1, int arg2)
 	{
 		*arg1 = 0x8048848;
@@ -7,9 +8,9 @@ class N()
 		return arg1;
 	}
 
-	int setAnnotation(self, void *s1)
+	int setAnnotation(void *s1)
 	{
-		len = strlen(self.str);
+		len = strlen(this->str);
 		memcpy(s1 + 4, self.str, len)
 	}
 
@@ -28,10 +29,10 @@ int main()
 {
 	if (argv[] == 1)
 		exit(1);
-	new(108);
-	N::N(6);
-	new(108);
-	N::N(6);
-	setAnnotation();
+
+	F *a, *b;
+	a = new N(6);
+	b = new N(6)
+	a->setAnnotation(b);
 	edx();
 }
