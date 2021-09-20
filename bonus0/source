@@ -1,42 +1,42 @@
 int p(int arg1, int arg2)
 {
-    char var[4108];
+	char var[4108];
 
-    puts(arg2);
-    read(0, &var, 4096);
-    *strchr(&var, '\n') = 0;
-    return strncpy(arg1, &var, 20);
+	puts(arg2);
+	read(0, &var, 4096);
+	*strchr(&var, '\n') = 0;
+	return strncpy(arg1, &var, 20);
 }
 
 int pp(char *arg1)
 {
-    char var_1[52];
-    char var_2[32];
-    int i;
-    char *str_2;
+	char var_1[52];
+	char var_2[32];
+	int i;
+	char *str_2;
 
-    p(&var_1, " - ");
-    p(&var_2, " - ");
+	p(&var_1, " - ");
+	p(&var_2, " - ");
 
-    strcpy(arg1, &var_1);
+	strcpy(arg1, &var_1);
 	i = -1;
 	str_2 = arg1;
-    while (i != 0)
-    {
-        str_2++;
-        i--;
-        if (*str_2 == '\0')
-            break;
-    }
-    *((~i - 1) + arg1) = ' '; 
-    return strcat(arg1, &var_2);
+	while (i != 0)
+	{
+		str_2++;
+		i--;
+		if (*str_2 == '\0')
+			break;
+	}
+	*((~i - 1) + arg1) = ' '; 
+	return strcat(arg1, &var_2);
 }
 
 int main(int argc, char** argv)
 {
-    char var_1[];
+	char var_1[];
 
-    pp(&var_1);
-    puts(&var_1);
-    return 0;
+	pp(&var_1);
+	puts(&var_1);
+	return 0;
 }
