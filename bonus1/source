@@ -1,19 +1,16 @@
 int main(int argc, char** argv)
 {
-	size_t n;
-	char* s1;
-	int num = atoi(argv[0]);
+	int num;
 	int flag;
+	char s1[40];
 
+	num  = atoi(argv[0])
 	if (num > 9)
-	{
 		flag = 1;
-	}
 	else
 	{ 
-		n = num << 2;
-		memcpy(s1, argv[1], n);
-		if (num == 0x574f4c46)
+		memcpy(s1, argv[1], num << 2);
+		if (num == 0x574f4c46) // 1464814662
 		{
 			execl("/bin/sh");
 		}
