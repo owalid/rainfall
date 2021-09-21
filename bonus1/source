@@ -1,7 +1,7 @@
 int main(int argc, char** argv)
 {
 	size_t n;
-	char* s1, s2;
+	char* s1;
 	int num = atoi(argv[0]);
 	int flag;
 
@@ -12,7 +12,7 @@ int main(int argc, char** argv)
 	else
 	{ 
 		n = num << 2;
-		memcpy(s1, s2, n);
+		memcpy(s1, argv[1], n);
 		if (num == 0x574f4c46)
 		{
 			execl("/bin/sh");
