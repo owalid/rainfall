@@ -1,6 +1,19 @@
-void	greetuser(int arg)
+void	greetuser(char* arg)
 {
+	char *str;
+	int n;
 
+	if (lang == 1)
+		str = "Hello ";
+	else if (lang == 2)
+		n = 0x20;
+		str = "Hyv \u00e4......";
+	else if (lang == 0)
+		str = "Goedemiddag";
+		n = ;
+
+	strcat(str, arg);
+	return puts(str);
 }
 
 int main(int argi, char **arg)
