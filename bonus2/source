@@ -28,8 +28,22 @@ int main(int argi, char **arg)
 			var_b0 = eax_7;
 			if (memcmp(var_b0, TEXT, 2))
 				lang = 1;
+			else
+			{
+				var_b0 = eax_7;
+				if (memcmp(var_b0, TEXT, 2) == 0)
+					lang = 2;
+			}
 		}
-		
+		void **edi_2 = &var_b0;
+		void *esi_1 = &var_60;
+		for  (int y = 0x13; i != 0; i--)
+		{
+			edi_2 = esi_1;
+			edi_2 += 4;
+			esi_1 += 4;
+		}
 		greetuser();
+		return ret;
 	}
 }
