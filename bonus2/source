@@ -7,7 +7,7 @@ void	greetuser(char* arg)
 		str = "Hello ";
 	else if (lang == 2)
 		n = 0x20;
-		str = "Hyv \u00e4......";
+		str = "Hyv ääpäivää";
 	else if (lang == 0)
 		str = "Goedemiddag";
 		n = ;
