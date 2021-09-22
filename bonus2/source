@@ -1,0 +1,35 @@
+void	greetuser(int arg)
+{
+
+}
+
+int main(int argi, char **arg)
+{
+	int ret;
+
+	if (argi != 3)
+		ret = 1;
+	else
+	{
+		char *var_60;
+		char *edi_1 = var_60
+		for (int i = 0x13; i != 0; i--)
+		{
+			*edi_1 = 0;
+			edi_1 = edi_1 + 4;
+		}
+		char *var_b0 = var_60;
+		strcncpy(var_b0, *(argv + 4), 0x28);
+		var_b0 = var_38;
+		strncpy(var_b0, *(arg + 8), 0x20);
+		char *eax_7 = getenv("LANG");
+		if (eax_7 != 0)
+		{
+			var_b0 = eax_7;
+			if (memcmp(var_b0, TEXT, 2))
+				lang = 1;
+		}
+		
+		greetuser();
+	}
+}
