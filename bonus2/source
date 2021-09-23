@@ -19,7 +19,8 @@ void	greetuser(char* arg)
 int main(int argi, char **arg)
 {
 	Int ret;
-	Char *var_60;
+	Char arg_1[40];
+	Char arg_2[36];
 	Char *edi_1;
 	Char *string;
 	Char *env;
@@ -30,15 +31,15 @@ int main(int argi, char **arg)
 		ret = 1;
 	else
 	{
-		edi_1 = var_60
-		for (int i = 19; i != 0; i--) # met des zero dans var_60
+		edi_1 = arg_1
+		for (int i = 19; i != 0; i--) # met des zero dans arg_1
 		{
 			*edi_1 = 0;
 			edi_1++;
 		}
-		string = var_60;
+		string = arg_1;
 		strncpy(string, *(argv + 1), 40);
-		string = var_38;
+		string = arg_2;
 		strncpy(string, *(arg + 2), 32);
 		env = getenv("LANG");
 		if (env != 0)
@@ -51,8 +52,8 @@ int main(int argi, char **arg)
 			}
 		}
 		edi_2 = &string;
-		esi_1 = &var_60;
-		for  (int y = 19; y != 0; y--) # strncpy(string, var_60, 19)
+		esi_1 = &arg_1;
+		for  (int y = 19; y != 0; y--) # strncpy(string, arg_1, 19)
 		{
 			edi_2 = esi_1;
 			edi_2++;
