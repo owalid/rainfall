@@ -11,7 +11,7 @@ int main(int argc, char** argv)
 	for (cpt = 33; cpt != 0; cpt--)
 	{
 		*argv_cpy = null;
-		argv_cpy = argv_cpy[4];
+		argv_cpy = argv_cpy[1];
 	}
 	if (ret_open == 0 || (ret_open != 0 && argc != 2)
 		ret_code = 0xffffffff; // (-1 ?);
@@ -19,12 +19,12 @@ int main(int argc, char** argv)
 	if (ret_open != 0 && argc == 2)
 	{
 		fread(&argv, 1, 66, ret_open);
-		*(&argv + atoi(*(argv + 4))) = 0;
-		fread(&argv_4a, 1, 65, ret_open);
+		argv[atoi(argv[1])] = 0;
+		fread(&argv[1], 1, 65, ret_open);
 		fclose(ret_open);
 
-		if (strcmp(&argv, argv[4]) != 0)
-			puts(&arg_4a);
+		if (strcmp(&argv, argv[1]) != 0)
+			puts(&argv[1]);
 		else
 			execl("/bin/sh");
 		ret_code = 0;
