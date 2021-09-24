@@ -1,0 +1,33 @@
+
+int main(int argc, char** argv)
+{
+
+	int ret_open, num, cpt;
+	char*** argv_cpy;
+
+	ret_open = fopen("/home/user/end/.pass", "r");
+	argv_cpy = &argv;
+
+	for (cpt = 33; cpt != 0; cpt--)
+	{
+		*argv_cpy = null;
+		argv_cpy = argv_cpy[4];
+	}
+	if (ret_open == 0 || (ret_open != 0 && argc != 2)
+		num = 0xffffffff; // (-1 ?);
+	
+	if (ret_open != 0 && arc == 2)
+	{
+		fread(&argv, 1, 66, ret_open);
+		*(&argv + atoi(*(argv + 4))) = 0;
+		fread(&argv_4a, 1, 65, ret_open);
+		fclose(ret_open);
+
+		if (strcmp(&argv, argv[4]) != 0)
+			puts(&arg_4a);
+		else
+			execl("/bin/sh");
+		num = 0;
+	}
+	return num;
+}
