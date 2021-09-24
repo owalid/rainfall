@@ -1,6 +1,9 @@
+# Bonux 1 
+
 - On voit que dans le code les bit sont decaler de deux pour calculer la taille
 - Le premier bit d'un int sert a savoir si il est negatif ou positif
-- donc il suffit d'avoir un a  deux bit de la fin pour avoir un chiffre postif plus grand
+- Donc il suffit d'avoir un a deux bit(s) de la fin pour avoir un chiffre postif plus grand
+
 <pre>
 [alarmv@alarm Ressources]$ gdb ./bonus1 
 gdb-peda$ pattern create 75

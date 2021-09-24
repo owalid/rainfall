@@ -1,12 +1,13 @@
-# Bonus0
+# Bonu 0
 
-- en lisant le code et en l'executant on comprend qu'il y a un bug/faille
-- dans la fonction pp le \0 de la 1er string est remplacer par un espace
-- se qui fait quequand la premiere string est entierement remplis il considere str1 et str2 comme une string
+- En lisant le code et en l'executant on comprend qu'il y a un bug/faille
+- Dans la fonction pp le \0 de la 1er string est remplacer par un espace
+- Ce qui fait que quand la premiere string est entierement remplis il considere str1 et str2 comme une string
 - str2 est donc copier a la fin de str1 + str2 dans strcat
 - Dans gdb on voit donc qu'on peut ecrire sur la variable $eip
+
 <pre>
-gdb-peda$ pattern create 30
+$> gdb-peda pattern create 30
 'AAA%AAsAABAA$AAnAACAA-AA(AADAA'
 gdb-peda$ r
 Starting program: /home/alarm/rainfall/bonus0/Ressources/bonus0 
