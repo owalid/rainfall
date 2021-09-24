@@ -2,7 +2,7 @@
 int main(int argc, char** argv)
 {
 
-	int ret_open, num, cpt;
+	int ret_open, ret_code, cpt;
 	char*** argv_cpy;
 
 	ret_open = fopen("/home/user/end/.pass", "r");
@@ -14,9 +14,9 @@ int main(int argc, char** argv)
 		argv_cpy = argv_cpy[4];
 	}
 	if (ret_open == 0 || (ret_open != 0 && argc != 2)
-		num = 0xffffffff; // (-1 ?);
+		ret_code = 0xffffffff; // (-1 ?);
 	
-	if (ret_open != 0 && arc == 2)
+	if (ret_open != 0 && argc == 2)
 	{
 		fread(&argv, 1, 66, ret_open);
 		*(&argv + atoi(*(argv + 4))) = 0;
@@ -27,7 +27,7 @@ int main(int argc, char** argv)
 			puts(&arg_4a);
 		else
 			execl("/bin/sh");
-		num = 0;
+		ret_code = 0;
 	}
-	return num;
+	return ret_code;
 }
