@@ -16,7 +16,7 @@ Dump of assembler code for function main:
 End of assembler dump.
 </pre>
 
-- Ici nous avons l'adresse de f. Nous placons un breakpoint pour faire des tests et trouver les bon offset.
+- Nous placons un breakpoint sur le call de f pour faire des tests et trouver les bon offset.
 
 <pre>
 (gdb) b *0x080484d0
