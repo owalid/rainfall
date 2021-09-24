@@ -4,6 +4,7 @@ int main(int argc, char** argv)
 
 	int ret_open, ret_code, cpt;
 	char*** argv_cpy;
+	char** rest;
 
 	ret_open = fopen("/home/user/end/.pass", "r");
 	argv_cpy = &argv;
@@ -18,13 +19,13 @@ int main(int argc, char** argv)
 	
 	if (ret_open != 0 && argc == 2)
 	{
-		fread(&argv, 1, 66, ret_open);
-		argv[atoi(argv[1])] = 0;
-		fread(&argv[1], 1, 65, ret_open);
+		fread(&argv[0], 1, 66, ret_open);
+		*(argv[0] + atoi(argv[1])) = 0;
+		fread(&rest, 1, 65, ret_open);
 		fclose(ret_open);
 
-		if (strcmp(&argv, argv[1]) != 0)
-			puts(&argv[1]);
+		if (strcmp(&argv[0], argv[1]) != 0)
+			puts(&rest);
 		else
 			execl("/bin/sh");
 		ret_code = 0;
