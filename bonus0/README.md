@@ -47,8 +47,8 @@ strcat("BBBBBBBBBBBBBBBBBBB ", "AAAAAAAAAAAAAAAAAAAA\364\017\375\267")          
 puts("BBBBBBBBBBBBBBBBBBB AAAAAAAAAAAA"...)                                                = 45
 +++ exited (status 0) +++
 </pre>
-- On a l'addresse de notre stack (*0xbffff636*)
-- Notre shellcode fait 21 carrecter donc on le decoupe en deux 20 dans le premier argument et 1 dans le deuxieme
+- On a l'adresse de notre stack (*0xbffff636*)
+- Notre shellcode fait 21 caractere donc on le decoupe en deux 20 dans le premier argument et 1 dans le deuxieme
 
 | Arg 1 | Arg 2 |
 |-------|-------|
