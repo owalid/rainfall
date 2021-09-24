@@ -1,5 +1,6 @@
 # уровень 6
 
+- La faille est qu'il n'y pas de controle de la longueur de argv[1] dans le strcpy. Nous pouvons donc ecrire dans le reste de la memoire.
 - L'idée ici est de faire en sorte que la fonction n soit appeler par le programme. Grace à la variable f.
 
 <pre>
