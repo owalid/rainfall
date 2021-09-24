@@ -1,7 +1,8 @@
 # L3V31 D3UX
 
-- C'est le meme que le precedent gets a une vulnerabilité en aillant pas de limite de taille
-- On regarde combien il faut ecrire pour pouvoir overwrite la Return Address
+- Cet exercice est quasiment identique que le precedent. La fonction gets à une vulnerabilité car elle ne contient pas de  limite de taille.
+- On regarde le nombre de caractere qu'il faut ecrire pour pouvoir overwrite la return address.
+
 <pre>
 $> gdb ./level2
 gdb-peda$ pattern create 100
