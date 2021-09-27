@@ -52,8 +52,6 @@ Mkfile.old
 dkms.conf
 .gdb_history
 peda-session-*.txt
-lol*
-lel*
-lil*
+l[a-z]l*
 
 .vscode
