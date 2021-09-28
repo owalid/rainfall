@@ -9,8 +9,8 @@ gdb-peda$ pattern create 75
 'AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAA'
 gdb-peda$ disass main
 Dump of assembler code for function main:
-   <strong>0x08048473</strong> <+79>:    call   0x8048320 <memcpy@plt>
-   0x08048478 <+84>:    cmp    DWORD PTR [esp+0x3c],0x574f4c46
+   0x08048473 <+79>:    call   0x8048320 <memcpy@plt>
+   <strong>0x08048478</strong> <+84>:    cmp    DWORD PTR [esp+0x3c],0x574f4c46
 gdb-peda$ b *0x08048478
 Breakpoint 1 at 0x8048478
 gdb-peda$ r -2147483600 'AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAA'
