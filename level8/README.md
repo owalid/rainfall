@@ -8,7 +8,7 @@ service <str>
 reset
 login
 ```
-- On comprend aussi qu'un shell est lancer sous condition que *(auth +0x20) soit egale a zero
+- On comprend aussi qu'un shell est lancer sous condition que *(auth + 0x20) ne soit pas egale à zero
 - Donc il suffit de remplir les variables auth et service pour etre sure que cette variable ne soit pas egale a 0
 ```
 level8@RainFall:~$ ./level8
