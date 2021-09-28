@@ -3,7 +3,6 @@
 - On voit que dans le code les bit sont decaler de deux pour calculer la taille
 - Le premier bit d'un int sert a savoir si il est negatif ou positif
 - Donc tout les nombres negatif seront converti en nombre positif
-
 - On regarde donc combien il faut ecrire pour ecrire par dessus la variable m
 <pre>
 [alarmv@alarm Ressources]$ gdb ./bonus1 
